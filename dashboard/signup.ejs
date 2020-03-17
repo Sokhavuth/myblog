@@ -1,0 +1,46 @@
+<!--login.ejs-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup Page</title>
+    <link rel='stylesheet' href='/stylesheets/signup.css' />
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand|Sriracha&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/site_logo.png">
+  </head>
+  <body>
+    <div class="form-outer">
+    <div class="title">Signup Page</div>
+    <div class="info">
+      Create your username and password to beging using this blog.
+    </div>
+    <form action="/signup" method="post">   
+
+      <div class="input-wrapper">
+        <label>Username: </label>
+        <input type="text" name="username" required />
+      </div>
+
+      <div class="input-wrapper">
+        <label>Password:</label>
+        <input type="password" name="password" required />
+      </div>
+
+      <div class="input-wrapper">
+        <label>Displayname:</label>
+        <input type="text" name="displayName" required />
+      </div>
+
+      <div class="input-wrapper">
+        <label>Email:</label>
+        <input type="text" name="email"/>
+      </div>
+
+      <div class="input-wrapper">
+        <label></label>
+        <input class="submit" type="submit" value="Submit"/>
+      </div> 
+
+    </form>
+    </div>
+  </body>
+</html>
