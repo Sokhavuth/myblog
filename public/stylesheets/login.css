@@ -1,0 +1,72 @@
+/* login-style.css */
+body{
+  padding:0;
+  margin:0;
+  font:14px Sriracha,"Lucida Grande", Helvetica, Arial, sans-serif,Nokora;
+  background:url('/images/login-bg.jpg');
+  background-repeat:no-repeat;
+  background-size:100% auto;
+}
+.form-outer{
+  background:#e6e6e6;
+  width:500px;
+  height:520px;
+  margin:50px auto;
+  opacity:.7;
+  border-radius:4px;
+  position:relative;
+}
+.form-outer .title{
+  background:rgb(9, 161, 231);
+  text-align:center;
+  font:18px Shrikhand,Koulen;
+  color:rgb(70, 67, 67);
+  padding:5px;
+}
+.form-outer .info{
+  font-size:24px;
+  position:absolute;
+  top:130px;
+  padding:0 30px;
+}
+form{
+  position:absolute;
+  bottom:100px;
+  text-align:center;
+  width:100%
+}
+.input-wrapper{
+  display:grid;
+  grid-template-columns:25% 75%;
+  align-items:center;
+  width:calc(100% - 60px);
+  margin:0 auto;
+  text-align:left;
+  margin-bottom:5px;
+}
+.input-wrapper label{
+  text-align:right;
+  font-size:18px;
+  margin-right:5px;
+}
+.input-wrapper input{
+  padding:10px;
+}
+.input-wrapper input.submit{
+  font:18px Sriracha,Nokora;
+  padding:5px;
+  background:rgb(9, 161, 231);
+  border:none;
+  margin-top:5px;
+}
+.submit:hover{
+  background:rgb(52, 179, 238);
+}
+@media only screen and (max-width: 768px){
+  .form-outer{
+    width:100%;
+  }
+  .input-wrapper{
+    width:calc(100% - 10px);
+  }
+}

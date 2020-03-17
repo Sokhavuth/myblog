@@ -23,6 +23,40 @@ body{
 #menu .responsive-menu{
  margin-left:10px;
 }
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  padding:8px;
+  border-radius: 2px;
+  font:16px/1.5 Sriracha, Nokora;
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  right: 115%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%; 
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+}
 #main-content{
   display:grid;
   grid-template-columns:15% auto;
