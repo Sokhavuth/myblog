@@ -1,1 +1,2 @@
-module.exports.mongoDBurl = "mongodb+srv://sokhavuth:Password@cluster0-y0whw.gcp.mongodb.net/mydb?retryWrites=true&w=majority";
+/* routes/config.js */
+exports.mongoDBurl = "mongodb+srv://sokhavuth:mypassword@khmerjs-jvhqu.mongodb.net/mydb?retryWrites=true&w=majority";
