@@ -1,10 +1,10 @@
 /*routes/login.js*/
 const express = require('express');
 const router = express.Router();
-var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
-var session = require('express-session');
-var ifLogedin = require('connect-ensure-login');
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+const session = require('express-session');
+const ifLogedin = require('connect-ensure-login');
 
 const users = require('./users');
 const auth = require('./auth')
@@ -63,6 +63,12 @@ router.get('/logout',
   function(req, res){
     req.logout();
     res.redirect('/');
+});
+
+router.get('/posting',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    res.render('posting', {blogTitle:"Posting"});
 });
 
 module.exports = router;

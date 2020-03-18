@@ -19,9 +19,7 @@ exports.findById = function(id, cb) {
           db.close();
         }
       });
-  
     });
-
   });
 }
 
