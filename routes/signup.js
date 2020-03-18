@@ -7,6 +7,7 @@ var url = require('./config').mongoDBurl;
 router.get('/', (req, res) => {
   res.render('signup');
 });
+
 router.post('/',(req,res) => {
   MongoClient.connect(url, {useUnifiedTopology:true}, function(err, db){
     if (err) throw err;

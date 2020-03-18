@@ -1,2 +1,2 @@
 /* routes/config.js */
-exports.mongoDBurl = "mongodb+srv://sokhavuth:mypassword@khmerjs-jvhqu.mongodb.net/mydb?retryWrites=true&w=majority";
+exports.mongoDBurl = "mongodb+srv://khmerjs:Password@khmerjs-jvhqu.mongodb.net/mydb?retryWrites=true&w=majority";

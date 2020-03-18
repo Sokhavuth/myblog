@@ -5,14 +5,39 @@
     <meta charset="utf-8">
     <title><%- blogTitle %></title>
     <link rel="stylesheet" href="/stylesheets/dashboard.css" />
-    <link href="https://fonts.googleapis.com/css?family=Shrikhand|Sriracha&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand|Anton&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
  <div id="site" class="site">
    <header id="site-header" class="site-header">
     <nav id="menu" class="menu">
       <a href="/"><div><img src="/images/site_logo.png" /></div></a>
-      <div class="responsive-menu"><%- blogTitle %></div>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <div class="topnav" id="myTopnav">
+        <a class="active"><%- blogTitle %></a>
+        <a href="#">Post</a>
+        <a href="#">Page</a>
+        <a href="#">Media</a>
+        <a href="#">User</a>
+        <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
+          <i class="fa fa-bars"></i>
+        </a>
+        <script>
+          function mobileMenu() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+              x.className += " responsive";
+              $('#menu').css("align-items","start");
+            } else {
+              x.className = "topnav";
+              $('#menu').css("align-items","center");
+            }
+          }
+        </script>
+      </div><!--topnav-->
+
       <div class="logout tooltip">
         <a href="/login/logout"><img src="/images/logout.png" /></a>
         <span class="tooltiptext">Logout to homepage</span>
