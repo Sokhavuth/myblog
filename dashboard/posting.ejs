@@ -11,13 +11,16 @@
     color:rgb(107, 104, 104);
   }
   .posting .category{
-    margin-top:5px;
     padding:5px;
-    min-height:38px;
-    font:14px/1.75 Courgette,Nokora;
+  }
+  .posting #datepicker{
+    padding:5px;
+    max-width:80px;
   }
   .posting label{
-    padding:9px;
+    margin-top:5px;
+    padding:5px;
+    display:inline-block;
     border:1px solid grey;
   }
 </style>
@@ -34,18 +37,29 @@
           CKEDITOR.replace( 'editor', {
             height:320,
           });
+
+          $(document).ready(function() {
+            $("#datepicker").datepicker();
+            $("#datepicker").attr('value',((new Date()).toLocaleDateString('km-KH')));
+          });
         </script> 
   
-        <label>Publish in category:</label>
+        <label>Publish in category:
         <select name="category" class="category">
           <option value="News">News</option>
         </select>
+      </label>
+
+        <label>Date:
+        <input name="date" type="text" id="datepicker">
+      </label>
   
-        <label>Publish as:</label>
+        <label>Publish as:
         <select name="posttype" class="category">
           <option value="post">post</option>
           <option value="page">page</option>
         </select>
+        </label>
   
         <input id="submit" style="display:none;" class="submit" type="submit" value="submit">
       </form>
