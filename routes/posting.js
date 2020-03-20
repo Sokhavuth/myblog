@@ -13,7 +13,7 @@ module.exports = function(req, res){
       const postId = (new Date()).getTime().toString(36) + Math.random().toString(36).slice(2);
 
       var records = [
-        {url:"/post/"+postId, time:req.body.time, date:new Date(req.body.date), id:postId, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category}
+        {url:"/post/"+postId, time:req.body.time, date:req.body.date, id:postId, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category}
       ];
 
       dbo.collection("posts").insertMany(records, function(err, result){
