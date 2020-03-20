@@ -6,14 +6,17 @@
     width:100%;
     padding:5px 10px;
     box-sizing:border-box;
-    font:16px/1.5 Anton,Koulen;
+    font:16px/1.5 Anton,Bayon;
     margin-bottom:5px;
     color:rgb(107, 104, 104);
+  }
+  ::placeholder {
+    color: rgb(218, 216, 216);
   }
   .posting .category{
     padding:5px;
   }
-  .posting #datepicker{
+  .posting #datepicker,.posting #timepicker{
     padding:5px;
     max-width:80px;
   }
@@ -21,7 +24,7 @@
     margin-top:5px;
     padding:5px;
     display:inline-block;
-    border:1px solid grey;
+    border:1px solid rgb(167, 166, 166);
   }
 </style>
 
@@ -41,24 +44,23 @@
           $(document).ready(function() {
             $("#datepicker").datepicker();
             $("#datepicker").attr('value',((new Date()).toLocaleDateString('km-KH')));
+            const time = (new Date()).toLocaleTimeString("en-US");
+            $("#timepicker").attr('value', time);
           });
         </script> 
   
         <label>Publish in category:
-        <select name="category" class="category">
-          <option value="News">News</option>
-        </select>
-      </label>
+          <select name="category" class="category">
+            <option value="News">News</option>
+          </select>
+        </label>
 
         <label>Date:
-        <input name="date" type="text" id="datepicker">
-      </label>
-  
-        <label>Publish as:
-        <select name="posttype" class="category">
-          <option value="post">post</option>
-          <option value="page">page</option>
-        </select>
+          <input name="date" type="text" id="datepicker">
+        </label>
+
+        <label>Time:
+          <input name="time" type="text" id="timepicker">
         </label>
   
         <input id="submit" style="display:none;" class="submit" type="submit" value="submit">

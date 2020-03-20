@@ -1,10 +1,17 @@
 <!--dashboard.ejs-->
 <%- include("partials/header.ejs") %>
-
+<style>
+  #dashboard img{
+    width:100%;
+  }
+  
+</style>
 <div id="main-content" class="main-content">
   <%- include("partials/sidebar.ejs") %>
   <div id="content" class="content">
-    Welcome to dashboard!!
+    <div id="dashboard" class="dashboard">
+      <img src="/images/dashboard.jpg" />
+    </div>
   </div>
 </div><!--main-content-->
 

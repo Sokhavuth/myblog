@@ -1,4 +1,28 @@
 <!--sidebar.ejs-->
+<style>
+  .sidebar{
+    padding:20px 10px 20px 20px;;
+  }
+  .sidebar .title{
+    display:grid;
+    grid-template-columns: 30px auto;
+    grid-gap:10px;
+    align-items: center;
+    font: 20px/1.5 Shrikhand;
+  }
+  .sidebar img{
+    width:100%;
+  }
+  .sidebar a{
+    color:white;
+  }
+  .sidebar a:hover{
+    color:cyan;
+  }
+</style>
 <div id="sidebar" class="sidebar">
-
+  <div class="title">
+    <img src="/images/posts.png" /> 
+    <a href="/login/posts">Posts</a> 
+  </div>
 </div>

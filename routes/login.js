@@ -7,7 +7,9 @@ const session = require('express-session');
 const ifLogedin = require('connect-ensure-login');
 
 const users = require('./users');
-const auth = require('./auth')
+const auth = require('./auth');
+const posting = require('./posting');
+const posts = require('./posts');
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -69,6 +71,22 @@ router.get('/posting',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
     res.render('posting', {blogTitle:"Posting"});
+});
+
+router.post('/posting',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    posting(req, res).then(function(result){
+      res.redirect('/login/posts');
+    });
+});
+
+router.get('/posts',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    posts(req, res).then(function(postList){
+      res.render('posts', {postList:postList, blogTitle:"Posts"});
+    });
 });
 
 module.exports = router;

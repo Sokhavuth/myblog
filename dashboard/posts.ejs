@@ -1,0 +1,41 @@
+<!--posts.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  #posts{
+    background:white;
+    padding:20px;
+    min-height:500px;
+  }
+  .posts .post-title{
+    font:14px/1.5 "Odor Mean Chey";
+    padding:5px;
+    border-top:1px solid lightgrey;
+    display:grid;
+    grid-template-columns:auto 150px 100px;
+  }
+  .posts .post-title a{
+    color:green;
+  } 
+  .posts .post-title span{
+    text-align:right;
+    display:inline-block;
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div id="posts" class="posts">
+      <% for(var i = 0; i < postList.length; i++){ %>
+        <div id="post-title" class="post-title">
+          <a href="<%- postList[i].url %>"><%- postList[i].title %></a>
+          <span><%- postList[i].author %></span>
+          <span><%- (postList[i].date).toLocaleDateString('km-KH') %></span>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>
