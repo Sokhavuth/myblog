@@ -84,8 +84,8 @@ router.post('/posting',
 router.get('/posts',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
-    posts(req, res).then(function(postList){
-      res.render('posts', {postList:postList, blogTitle:"Posts"});
+    posts(req, res).then(function(result){
+      res.render('posts', {postList:result, blogTitle:"Posts"});
     });
 });
 
