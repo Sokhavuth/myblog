@@ -8,7 +8,7 @@
     margin-bottom:15px;
     grid-gap:10px;
   }
-  .index .post-outer:last-child{
+  .index .post-outer:nth-last-child(1){
     margin-bottom:0;
   }
   .index .post-outer .thumb{
@@ -53,16 +53,16 @@
             <div class="post-date"><%- postList[i].date %></div>
           </div><!--post-entry-->
         </div><!--post-outer-->
-        <script>
-          $(window).resize(function(){
-            const width = $('.index .img-outer').css("width");
-            const height = parseInt(width)/16*9;
-            $('.index .img-outer').css("height", height);
-          });
-        </script>
       <% } %><!--for-->
     <% } %><!--if-->
     </div><!--index-->
+    <script>
+      $(window).resize(function(){
+        const width = $('.index .img-outer').css("width");
+        const height = parseInt(width)/16*9;
+        $('.index .img-outer').css("height", height);
+      });
+    </script>
   </div><!--content-->
   <%- include("partials/sidebar.ejs") %>
 </div><!--main-content-->
