@@ -80,9 +80,6 @@ body{
   grid-gap:20px;
   margin:20px 0;
 }
-#main-content #content{
-  min-height:600px;
-}
 #sidebar{
   background:lightgrey;
   min-height:600px;
