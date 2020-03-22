@@ -9,11 +9,10 @@ class Utility {
 
   getThumbUrl(content){
     const $ = cheerio.load(content);
-    if($('img').length > 0) {
+    if($('img').length > 0)
       return $("img").first().attr("src");
-    }else{
-      return (this.noPost);
-    }  
+    else
+      return (this.noPost); 
   }
   
 }//End of class

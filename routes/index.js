@@ -13,7 +13,6 @@ router.get('/', function(req, res){
     dbo.collection("posts").find({}).sort({date: -1, time: -1}).limit(postLimit).toArray(function(err, result) {
       if (err) throw err;
       req.postList = result;
-      console.log(url);
       db.close().then(getPost());
     });
   });
