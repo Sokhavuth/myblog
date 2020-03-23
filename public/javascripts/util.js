@@ -13,6 +13,7 @@ class Utility{
   }
 
   getPage(){
+    $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
     $.ajax({
       type: 'POST',
@@ -20,8 +21,6 @@ class Utility{
       contentType: 'application/json',
       url: '/pagination',
       success: function(postObj){
-        $('.pagination img').attr('src', '/images/loading.gif');
-
         const postList = postObj.postList;
         var html = '';
 
