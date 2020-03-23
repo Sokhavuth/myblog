@@ -9,6 +9,7 @@ const dashboardRouter = require('./routes/dashboard');
 const loginRouter = require('./routes/login');
 const signupRouter = require('./routes/signup');
 const postRouter = require('./routes/post');
+const paginationRouter = require('./routes/pagination');
  
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'dashboard')]);
 app.set('view engine', 'ejs');
@@ -22,6 +23,7 @@ app.use('/login/',loginRouter);
 app.use('/login/dashboard',dashboardRouter);
 app.use('/signup', signupRouter);
 app.use('/post/:id', postRouter);
+app.use('/pagination', paginationRouter);
  
 app.listen(port, () => {
   console.log('The server is running at port '+port);
