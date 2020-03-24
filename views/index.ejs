@@ -1,6 +1,52 @@
 <!--index.ejs-->
 <%- include("partials/header.ejs") %>
 
+<style>
+  /* index.ejs */
+.index .post-outer{
+  display:grid;
+  grid-template-columns: 40% auto;
+  margin-bottom:15px;
+  grid-gap:10px;
+}
+.index .post-outer .thumb{
+  padding-top: 56.25%;
+  position:relative;
+}
+.index .post-outer .img-outer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  right:0;
+  overflow:hidden;
+}
+.index .post-outer img{
+  width:100%;
+  min-height:100%;
+}
+.index .post-outer .post-title{
+  font:18px/1.5 Anton, Bayon;
+  color:rgb(71, 70, 70);
+  margin-bottom:10px;
+}
+.index .post-outer .post-date{
+  font:14px/1.5 Arial, "Odor Mean Chey";
+}
+#pagination{
+  text-align:center;
+}
+#pagination img:hover{
+  cursor:pointer;
+  opacity:.7;
+}
+@media only screen and (max-width: 768px){
+  .index .post-outer .post-title{
+    font:14px/1.5 "Time New Roman", "Odor Mean Chey";
+  }
+}
+</style>
+
 <div id="main-content" class="main-content">
   <div id="content" class="content">
     <div id="index" class="index">

@@ -14,10 +14,34 @@
    <header id="site-header" class="site-header">
     <%- blogTitle %>
    </header>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <nav id="menu" class="menu">
-     <div class="responsive-menu"><a href="/">Home</a></div>
+  
+     <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
+        <i class="fa fa-bars"></i>
+      </a>
+     </div>
+
      <div class="login tooltip">
       <a href="/login/dashboard"><img src="/images/login.png" /></a>
       <span class="tooltiptext">Login to dashboard</span>
-    </div><!--tooltip-->
+     </div><!--tooltip-->
    </nav>
+   <script>
+    function mobileMenu(){
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+        $('#menu').css('align-items', 'start');
+      } else {
+        x.className = "topnav";
+        $('#menu').css('align-items', 'center');
+      }
+    }
+   </script>

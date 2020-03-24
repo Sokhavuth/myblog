@@ -1,4 +1,4 @@
-/* javascripts/util.js */
+/* public/javascripts/util.js */
 class Utility{
   constructor(){
     this.paginateObj = {page:0, pageSize:5};

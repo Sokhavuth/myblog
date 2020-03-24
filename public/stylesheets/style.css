@@ -34,7 +34,6 @@ body{
   position: relative;
   display: inline-block;
 }
-
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 140px;
@@ -49,7 +48,6 @@ body{
   top: -3px;
   right: 115%;
 }
-
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
@@ -64,15 +62,57 @@ body{
   border-color: transparent transparent transparent white;
 }
 #menu{
-  background:lightgrey;
-  padding:5px 10px;
+  background:#333;
   display:grid;
-  grid-template-columns: auto 30px;
+  grid-template-columns: auto 48px;
   align-items: center;
 }
 #menu img{
   width:100%;
   float:right;
+  position:relative;
+  top:0px;
+}
+#menu .topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+#menu .topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+#menu .topnav a:hover {
+  color: cyan;
+}
+#menu .topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+#menu .topnav .icon {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  #menu .topnav a:not(:first-child) {display: none;}
+  #menu .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  #menu .topnav.responsive {position: relative;}
+  #menu .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  #menu .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 #main-content{
   display:grid;
@@ -97,48 +137,5 @@ body{
   }
   #main-content{
     grid-template-columns:100%;
-  }
-}
-/* index.ejs */
-.index .post-outer{
-  display:grid;
-  grid-template-columns: 40% auto;
-  margin-bottom:15px;
-  grid-gap:10px;
-}
-.index .post-outer .thumb{
-  padding-top: 56.25%;
-  position:relative;
-}
-.index .post-outer .img-outer{
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom:0;
-  right:0;
-  overflow:hidden;
-}
-.index .post-outer img{
-  width:100%;
-  min-height:100%;
-}
-.index .post-outer .post-title{
-  font:18px/1.5 Anton, Bayon;
-  color:rgb(71, 70, 70);
-  margin-bottom:10px;
-}
-.index .post-outer .post-date{
-  font:14px/1.5 Arial, "Odor Mean Chey";
-}
-#pagination{
-  text-align:center;
-}
-#pagination img:hover{
-  cursor:pointer;
-  opacity:.7;
-}
-@media only screen and (max-width: 768px){
-  .index .post-outer .post-title{
-    font:14px/1.5 "Time New Roman", "Odor Mean Chey";
   }
 }
