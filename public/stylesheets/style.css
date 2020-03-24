@@ -45,7 +45,7 @@ body{
   font:16px/1.5 Sriracha, Nokora;
   position: absolute;
   z-index: 1;
-  top: -3px;
+  top: 7px;
   right: 115%;
 }
 .tooltip:hover .tooltiptext {
