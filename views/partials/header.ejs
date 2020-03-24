@@ -19,11 +19,11 @@
    <nav id="menu" class="menu">
   
      <div class="topnav" id="myTopnav">
-      <a href="/" class="active">Home</a>
-      <a href="#news">News</a>
+      <a href="/" >Home</a>
+      <a href="/category/News">News</a>
       <a href="#contact">Contact</a>
       <a href="#about">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="mobileMenu()">
+      <a href="javascript:void(0);" class="icon" onclick="util.setMobileMenu()">
         <i class="fa fa-bars"></i>
       </a>
      </div>
@@ -34,14 +34,6 @@
      </div><!--tooltip-->
    </nav>
    <script>
-    function mobileMenu(){
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-        $('#menu').css('align-items', 'start');
-      } else {
-        x.className = "topnav";
-        $('#menu').css('align-items', 'center');
-      }
-    }
+    const util = new Utility();
+    util.setActiveMenu();
    </script>

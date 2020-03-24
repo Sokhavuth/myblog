@@ -62,7 +62,6 @@ body{
   border-color: transparent transparent transparent white;
 }
 #menu{
-  background:#333;
   display:grid;
   grid-template-columns: auto 48px;
   align-items: center;

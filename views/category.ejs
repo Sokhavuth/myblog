@@ -2,18 +2,16 @@
 <%- include("partials/header.ejs") %>
 
 <style>
-  /* index.ejs */
-.index .post-outer{
+.category{
   display:grid;
-  grid-template-columns: 40% auto;
-  margin-bottom:15px;
-  grid-gap:10px;
+  grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+  grid-gap:20px;
 }
-.index .post-outer .thumb{
+.category .post-outer .thumb{
   padding-top: 56.25%;
   position:relative;
 }
-.index .post-outer .img-outer{
+.category .post-outer .img-outer{
   position: absolute;
   top: 0;
   left: 0;
@@ -21,35 +19,36 @@
   right:0;
   overflow:hidden;
 }
-.index .post-outer img{
+.category .post-outer img{
   width:100%;
   min-height:100%;
 }
-.index .post-outer .post-title{
-  font:18px/1.5 Anton, Bayon;
+.category .post-outer .post-title{
+  font:14px/1.5 "Sriracha", "Odor Mean Chey";
   color:rgb(71, 70, 70);
-  margin-bottom:10px;
+  margin:5px 0;
 }
-.index .post-outer .post-date{
-  font:14px/1.5 Arial, "Odor Mean Chey";
+.category .post-outer .post-date{
+  font:12px/1.5 Arial, "Odor Mean Chey";
+  position:absolute;
+  right:3px;
+  top:0;
+  color:white;
+  text-shadow: 2px 2px 4px #000000;
 }
 #pagination{
   text-align:center;
+  padding-top:5px;
 }
 #pagination img:hover{
   cursor:pointer;
   opacity:.7;
 }
-@media only screen and (max-width: 768px){
-  .index .post-outer .post-title{
-    font:14px/1.5 "Time New Roman", "Odor Mean Chey";
-  }
-}
 </style>
 
 <div id="main-content" class="main-content">
   <div id="content" class="content">
-    <div id="index" class="index">
+    <div id="category" class="category">
     <% if(postList.length > 0) { %>
       <% for(var i = 0; i < postList.length; i++) { %>
         <div class="post-outer">
@@ -57,21 +56,21 @@
             <div class="img-outer">
               <a href="<%- postList[i].url %>"><img src="<%- postList[i].thumbUrl %>" /></a>
             </div><!--img-outer-->
+            <div class="post-date"><%- postList[i].date %></div>
           </div><!--thumb-->
           <div class="post-entry">
             <div class="post-title"><a href="<%- postList[i].url %>"><%- postList[i].title %></a></div>
-            <div class="post-date"><%- postList[i].date %></div>
           </div><!--post-entry-->
         </div><!--post-outer-->
       <% } %><!--for-->
     <% } %><!--if-->
-    </div><!--index-->
+    </div><!--category-->
     <div id="pagination" class="pagination">
-      <img onclick="util.getIndexPage();" src="/images/more.png" />
+      <img onclick="util.getCategoryPage();" src="/images/more.png" />
     </div>
     <script>
       const util = new Utility();
-      util.resize('.index .img-outer');
+      util.resize('.category .img-outer');
     </script>
   </div><!--content-->
   <%- include("partials/sidebar.ejs") %>

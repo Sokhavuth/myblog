@@ -10,7 +10,12 @@ router.post('/', function(req, res){
     if (err) throw err;
     var dbo = db.db("mydb");
     const skips = req.body.page * req.body.pageSize;
-    dbo.collection("posts").find({}).sort({date: -1, time: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
+    if(req.body.category != "")
+      var query = {category:req.body.category};
+    else
+      var query = {};
+
+    dbo.collection("posts").find(query).sort({date: -1, time: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
       if (err) throw err;
       db.close().then(getPost(result));
     });
