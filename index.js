@@ -11,6 +11,7 @@ const signupRouter = require('./routes/signup');
 const postRouter = require('./routes/post');
 const paginationRouter = require('./routes/pagination');
 const categoryRouter = require('./routes/category');
+const searchRouter = require('./routes/search');
  
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'dashboard')]);
 app.set('view engine', 'ejs');
@@ -19,13 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-app.use('/',indexRouter);
-app.use('/login/',loginRouter);
-app.use('/login/dashboard',dashboardRouter);
+app.use('/', indexRouter);
+app.use('/login/', loginRouter);
+app.use('/login/dashboard', dashboardRouter);
 app.use('/signup', signupRouter);
 app.use('/post/:id', postRouter);
 app.use('/pagination', paginationRouter);
 app.use('/category/:cat', categoryRouter);
+app.use('/search', searchRouter);
  
 app.listen(port, () => {
   console.log('The server is running at port '+port);

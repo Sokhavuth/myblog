@@ -31,7 +31,7 @@ class Utility{
     });
   }
 
-  getIndexPage(){
+  paginateIndex(){
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
     $.ajax({
@@ -64,7 +64,7 @@ class Utility{
     });
   }
 
-  getCategoryPage(){
+  paginateCategory(){
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
     this.paginateObj.pageSize = 8;

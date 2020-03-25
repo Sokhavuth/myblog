@@ -6,8 +6,8 @@
 .index .post-outer{
   display:grid;
   grid-template-columns: 40% auto;
-  margin-bottom:15px;
-  grid-gap:10px;
+  margin-bottom:20px;
+  grid-gap:20px;
 }
 .index .post-outer .thumb{
   padding-top: 56.25%;
@@ -67,7 +67,7 @@
     <% } %><!--if-->
     </div><!--index-->
     <div id="pagination" class="pagination">
-      <img onclick="util.getIndexPage();" src="/images/more.png" />
+      <img onclick="util.paginateIndex();" src="/images/more.png" />
     </div>
     <script>
       const util = new Utility();

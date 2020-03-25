@@ -1,4 +1,48 @@
 <!--sidebar.ejs-->
 <div id="sidebar" class="sidebar">
+	<style>
+    .book{
+      margin:0 0 10px;
+    }
+    .book:hover{
+      opacity:.7;
+    }
+    *{
+      box-sizing: border-box;
+    }
+    form.search{
+      display:grid;
+      grid-template-columns: 75% 25%;
+      margin-bottom:20px;
+    }
+    form.search input[type=text] {
+      padding: 7px 10px;
+      box-sizing: border-box;
+    }
+    form.search button {
+      cursor: pointer;
+      width:100%;
+      
+    }
+    form.search button:hover {
+      opacity:.6;
+    }
+    
+  </style>
 
+    <form class="search" action="/search" method="post">
+      <input type="text" placeholder="Search.." name="query" required>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    <a href="#" imageanchor="1" >
+      <img border="0" src="/images/js.jpg" 
+      style="width:100%;border-bottom:1px solid lightgrey;" class="book"/>
+    </a>
+
+    <a href="/category/BlogV" imageanchor="1" >
+      <img border="0" src="/images/web_development.jpg"
+      style="width:100%;border:1px solid lightgrey;" class="book" />
+    </a>
+  
 </div>
