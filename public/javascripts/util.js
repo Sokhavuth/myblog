@@ -64,11 +64,11 @@ class Utility{
     });
   }
 
-  paginateCategory(){
+  paginateCategory(category){
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
     this.paginateObj.pageSize = 8;
-    this.paginateObj.catetory = "News";
+    this.paginateObj.catetory = category;
     $.ajax({
       type: 'POST',
       data: JSON.stringify(this.paginateObj),
