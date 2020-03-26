@@ -31,8 +31,9 @@ class Utility{
     });
   }
 
-  paginateIndex(){
+  paginateIndex(pageSize){
     $('.pagination img').attr('src', '/images/loading.gif');
+    this.paginateObj.pageSize = pageSize;
     this.paginateObj.page += 1;
     $.ajax({
       type: 'POST',
@@ -64,10 +65,10 @@ class Utility{
     });
   }
 
-  paginateCategory(category){
+  paginateCategory(category, pageSize){
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
-    this.paginateObj.pageSize = 8;
+    this.paginateObj.pageSize = pageSize;
     this.paginateObj.catetory = category;
     $.ajax({
       type: 'POST',

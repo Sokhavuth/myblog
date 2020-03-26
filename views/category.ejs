@@ -66,7 +66,7 @@
     <% } %><!--if-->
     </div><!--category-->
     <div id="pagination" class="pagination">
-      <img onclick="util.paginateCategory('News');" src="/images/more.png" />
+      <img onclick="util.paginateCategory('<%- postList[0].category %>', <%- postList.length %>);" src="/images/more.png" />
     </div>
     <script>
       const util = new Utility();

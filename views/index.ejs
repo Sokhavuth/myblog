@@ -67,7 +67,7 @@
     <% } %><!--if-->
     </div><!--index-->
     <div id="pagination" class="pagination">
-      <img onclick="util.paginateIndex();" src="/images/more.png" />
+      <img onclick="util.paginateIndex(<%- postList.length %>);" src="/images/more.png" />
     </div>
     <script>
       const util = new Utility();
