@@ -85,7 +85,7 @@ router.get('/posts',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
     posts(req, res).then(function(result){
-      res.render('posts', {postList:result, blogTitle:"Posts"});
+      res.render('posts', {postList:result.postList, postNum:result.postNum, blogTitle:"Posts"});
     });
 });
 

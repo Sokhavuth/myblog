@@ -4,8 +4,7 @@
 <style>
   #posts{
     background:white;
-    padding:20px;
-    min-height:500px;
+    padding:20px 20px 0;
   }
   .posts .post-title{
     font:14px/1.5 "Odor Mean Chey";
@@ -14,6 +13,9 @@
     display:grid;
     grid-template-columns:auto 150px 100px;
   }
+  .posts .post-title:last-child{
+    border-bottom:1px solid lightgrey;
+  }
   .posts .post-title a{
     color:green;
   } 
@@ -21,21 +23,58 @@
     text-align:right;
     display:inline-block;
   }
+  .posts .post-list{
+    min-height:480px;
+    position:relative;
+  }
+  .posts .loading{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .posts #pagination{
+    text-align:center;
+  }
+  .posts #pagination ul{
+    display:inline-block;
+    margin-top:15px;
+  }
 </style>
 
 <div id="main-content" class="main-content">
   <%- include("partials/sidebar.ejs") %>
   <div id="content" class="content">
     <div id="posts" class="posts">
+      <div id="post-list" class="post-list">
       <% for(var i = 0; i < postList.length; i++){ %>
         <div id="post-title" class="post-title">
           <a href="<%- postList[i].url %>"><%- postList[i].title %></a>
           <span><%- postList[i].author %></span>
-          <span><%- (postList[i].date) %></span>
+          <span><%- postList[i].date %></span>
         </div>
       <% } %>
-    </div>
-  </div>
+      </div><!--post-list-->
+      <div id="pagination" class="pagination"></div>
+      <script>
+        $(function(){
+          $('#pagination').pagination({
+            items: <%- postNum %>,
+            itemsOnPage: <%- postList.length %>,
+            displayedPages: 5,
+            onPageClick: paginatePosts,
+            cssStyle: 'light-theme'
+          });
+        });
+
+        const util = new Utility();
+        
+        function paginatePosts(pageNumver, event){
+          util.paginatePosts(pageNumver-1, event, <%- postList.length %>);
+        }
+      </script>
+    </div><!--posts-->
+  </div><!--content-->
 </div><!--main-content-->
 
 <%- include("partials/footer.ejs") %>

@@ -99,5 +99,32 @@ class Utility{
       }
     });
   }
+
+  paginatePosts(pageNumber, event, pageSize){
+    this.paginateObj.page = pageNumber;
+    this.paginateObj.pageSize = pageSize;
+    $('#post-list').append('<img class="loading" src="/images/loading.gif" />');
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(this.paginateObj),
+      contentType: 'application/json',
+      url: '/pagination',
+      success: function(postObj){
+        const postList = postObj.postList;
+        var html = '';
+
+        for(var i=0; i<postList.length; i++){
+          html += '<div id="post-title" class="post-title">';
+            html += '<a href="'+postList[i].url+'">'+postList[i].title+'</a>';
+            html += '<span>'+postList[i].author+'</span>';
+            html += '<span>'+postList[i].date+'</span>';
+          html += '</div>';
+        }
+
+        $('#post-list').html(html);
+
+      }
+    });
+  }
     
 }//End of class
