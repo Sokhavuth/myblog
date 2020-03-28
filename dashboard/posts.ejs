@@ -43,6 +43,16 @@
     display:inline-block;
     margin-top:15px;
   }
+  .posts .title-wrapper a:nth-child(1) {
+    display:block;
+  }
+  .posts .delete-edit{
+    font:12px/1.5 Arial, Nokora;
+    visibility: hidden;
+  }
+  .posts .title-wrapper:hover > .delete-edit{
+    visibility: visible;
+  }
 </style>
 
 <div id="main-content" class="main-content">
@@ -52,7 +62,11 @@
       <div id="post-list" class="post-list">
       <% for(var i = 0; i < postList.length; i++){ %>
         <div id="post-title" class="post-title">
-          <a href="<%- postList[i].url %>"><%- postList[i].title %></a>
+          <div class="title-wrapper">
+            <a href="<%- postList[i].url %>"><%- postList[i].title %></a>
+            <a class="delete-edit" href="/login/delete/<%- postList[i].id %>/post">delete |</a>
+            <a class="delete-edit" href="/login/edit/<%- postList[i].id %>">edit</a> 
+          </div><!--title-wrapper-->
           <span><%- postList[i].author %></span>
           <span><%- postList[i].date %></span>
         </div>

@@ -1,0 +1,77 @@
+<!--dashboard/edit.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  .posting .title{
+    width:100%;
+    padding:5px 10px;
+    box-sizing:border-box;
+    font:16px/1.5 Anton,Bayon;
+    margin-bottom:5px;
+    color:rgb(107, 104, 104);
+  }
+  ::placeholder {
+    color: rgb(218, 216, 216);
+  }
+  .posting .category{
+    padding:5px;
+  }
+  .posting #datepicker,.posting #timepicker{
+    padding:5px;
+    max-width:80px;
+  }
+  .posting label{
+    margin-top:5px;
+    padding:5px;
+    display:inline-block;
+    border:1px solid rgb(167, 166, 166);
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div class="posting">
+
+      <form class="post-submit" action="/login/edit" method="post">
+        <input name="title" class="title" placeholder="Post title" value="<%- postList[0].title %>" required="required" type="text" />
+        <textarea required="required" name="content" id="editor" ><%- postList[0].content %></textarea>
+        <script>
+          CKEDITOR.replace( 'editor', {
+            height:320,
+          });
+
+          $(document).ready(function() {
+            $("#datepicker").datepicker();
+            $("#datepicker").attr('value',('<%- postList[0].date %>'));
+            $("#timepicker").attr('value', '<%- postList[0].time %>');
+          });
+        </script> 
+  
+        <label>Publish in category:
+          <select name="category" class="category">
+            <option value="News">News</option>
+          </select>
+        </label>
+
+        <script>
+          $(".category").val("<%- postList[0].category %>");
+        </script>
+
+        <label>Date:
+          <input name="date" type="text" id="datepicker">
+        </label>
+
+        <label>Time:
+          <input name="time" type="text" id="timepicker">
+        </label>
+        
+        <input name="id" style="display:none;" value="<%- postList[0].id %>" type="text" />
+        <input id="submit" style="display:none;" class="submit" type="submit" value="submit">
+      </form>
+  
+    </div><!--posting-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>

@@ -9,7 +9,7 @@ module.exports = function(req, res){
       if (err) throw err;
       var dbo = db.db("mydb");
 
-      dbo.collection("posts").find({}).sort({date: -1, time: -1}).limit(15).toArray(function(err, result) {
+      dbo.collection("posts").find({}).sort({date: -1, time: -1}).limit(9).toArray(function(err, result) {
         if (err) throw err;
         countPosts(result);
       });

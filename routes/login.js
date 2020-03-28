@@ -10,6 +10,8 @@ const users = require('./users');
 const auth = require('./auth');
 const posting = require('./posting');
 const posts = require('./posts');
+const delet = require('./delete');
+const edit = require('./edit');
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -87,6 +89,24 @@ router.get('/posts',
     posts(req, res).then(function(result){
       res.render('posts', {postList:result.postList, postNum:result.postNum, blogTitle:"Posts"});
     });
+});
+
+router.get('/delete/:id/:type',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    delet(req,res);
+});
+
+router.get('/edit/:id',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    edit.get(req,res);
+});
+
+router.post('/edit',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    edit.post(req,res);
 });
 
 module.exports = router;

@@ -115,7 +115,11 @@ class Utility{
 
         for(var i=0; i<postList.length; i++){
           html += '<div id="post-title" class="post-title">';
-            html += '<a href="'+postList[i].url+'">'+postList[i].title+'</a>';
+            html += '<div class="title-wrapper">';
+              html += '<a href="'+postList[i].url+'">'+postList[i].title+'</a>';
+              html += '<a class="delete-edit" href="/login/delete/'+postList[i].id+'/post">delete | </a>';
+              html += '<a class="delete-edit" href="/login/edit/'+postList[i].id+'">edit</a>'; 
+            html += '</div><!--title-wrapper-->';
             html += '<span>'+postList[i].author+'</span>';
             html += '<span>'+postList[i].date+'</span>';
           html += '</div>';
