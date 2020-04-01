@@ -15,14 +15,19 @@ router.post('/', function(req, res){
     else
       var query = {};
 
-    dbo.collection("posts").find(query).sort({date: -1, time: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
+    if(req.body.type === "categories")
+      var collection = "categories";
+    else
+      var collection = "posts";
+
+    dbo.collection(collection).find(query).sort({date: -1, time: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
       if (err) throw err;
-      db.close().then(getPost(result));
+      db.close().then(getItems(result));
     });
   });
 
-  function getPost(postList){
-    res.json({postList:postList});
+  function getItems(itemList){
+    res.json({itemList:itemList});
   }
   
 });

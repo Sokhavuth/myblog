@@ -1,0 +1,97 @@
+<!--posts.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  #categories{
+    background:white;
+    padding:20px 20px 0;
+  }
+  .categories .category-title{
+    font:14px/1.5 "Odor Mean Chey";
+    padding:5px;
+    border-top:1px solid lightgrey;
+    display:grid;
+    grid-template-columns:auto 150px 100px;
+  }
+  .categories .category-title:last-child{
+    border-bottom:1px solid lightgrey;
+  }
+  .categories .category-title a{
+    color:green;
+  } 
+  .categories .category-title a:hover{
+    color:rgb(1, 180, 1);
+  } 
+  .categories .category-title span{
+    text-align:right;
+    display:inline-block;
+  }
+  .categories .category-list{
+    min-height:480px;
+    position:relative;
+  }
+  .categories .loading{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .categories #pagination{
+    text-align:center;
+  }
+  .categories #pagination ul{
+    display:inline-block;
+    margin-top:15px;
+  }
+  .categories .title-wrapper a:nth-child(1) {
+    display:block;
+  }
+  .categories .delete-edit{
+    font:12px/1.5 Arial, Nokora;
+    visibility: hidden;
+  }
+  .categories .title-wrapper:hover > .delete-edit{
+    visibility: visible;
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div id="categories" class="categories">
+      <div id="category-list" class="category-list">
+      <% for(var i = 0; i < categoryList.length; i++){ %>
+        <div id="category-title" class="category-title">
+          <div class="title-wrapper">
+            <a href="<%- categoryList[i].url %>"><%- categoryList[i].category %></a>
+            <a class="delete-edit" href="/login/delete/<%- categoryList[i].category %>/category">delete |</a>
+            <a class="delete-edit" href="/login/edit/<%- categoryList[i].category %>">edit</a> 
+          </div><!--title-wrapper-->
+          <span><%- categoryList[i].author %></span>
+          <span><%- categoryList[i].date %></span>
+        </div>
+      <% } %>
+      </div><!--category-list-->
+      <div id="pagination" class="pagination"></div>
+      <script>
+        $(function(){
+          $('#pagination').pagination({
+            items: <%- categoryNum %>,
+            itemsOnPage: <%- categoryList.length %>,
+            displayedPages: 5,
+            onPageClick: paginateCategories,
+            cssStyle: 'light-theme'
+          });
+        });
+
+        const util = new Utility();
+        
+        function paginateCategories(pageNumver, event){
+          util.paginateCategories(pageNumver-1, event, <%- categoryList.length %>);
+        }
+      </script>
+    </div><!--posts-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>

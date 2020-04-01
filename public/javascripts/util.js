@@ -41,7 +41,7 @@ class Utility{
       contentType: 'application/json',
       url: '/pagination',
       success: function(postObj){
-        const postList = postObj.postList;
+        const postList = postObj.itemList;
         var html = '';
 
         for(var i=0; i<postList.length; i++){
@@ -76,7 +76,7 @@ class Utility{
       contentType: 'application/json',
       url: '/pagination',
       success: function(postObj){
-        const postList = postObj.postList;
+        const postList = postObj.itemList;
         var html = '';
 
         for(var i=0; i<postList.length; i++){
@@ -110,7 +110,7 @@ class Utility{
       contentType: 'application/json',
       url: '/pagination',
       success: function(postObj){
-        const postList = postObj.postList;
+        const postList = postObj.itemList;
         var html = '';
 
         for(var i=0; i<postList.length; i++){
@@ -126,6 +126,38 @@ class Utility{
         }
 
         $('#post-list').html(html);
+
+      }
+    });
+  }
+
+  paginateCategories(pageNumber, event, pageSize){
+    this.paginateObj.page = pageNumber;
+    this.paginateObj.pageSize = pageSize;
+    this.paginateObj.type = 'categories';
+    $('#category-list').append('<img class="loading" src="/images/loading.gif" />');
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(this.paginateObj),
+      contentType: 'application/json',
+      url: '/pagination',
+      success: function(categoryObj){
+        const categoryList = categoryObj.itemList;
+        var html = '';
+
+        for(var i=0; i < categoryList.length; i++){
+          html += '<div id="category-title" class="category-title">';
+            html += '<div class="title-wrapper">';
+              html += '<a href="'+categoryList[i].url+'">'+categoryList[i].category+'</a>';
+              html += '<a class="delete-edit" href="/login/delete/'+categoryList[i].category+'/category">delete | </a>';
+              html += '<a class="delete-edit" href="/login/edit/'+categoryList[i].category+'">edit</a>'; 
+            html += '</div><!--title-wrapper-->';
+            html += '<span>'+categoryList[i].author+'</span>';
+            html += '<span>'+categoryList[i].date+'</span>';
+          html += '</div>';
+        }
+
+        $('#category-list').html(html);
 
       }
     });

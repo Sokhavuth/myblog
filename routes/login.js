@@ -12,6 +12,8 @@ const posting = require('./posting');
 const posts = require('./posts');
 const delet = require('./delete');
 const edit = require('./edit');
+const categorizing = require('./categorizing');
+const categories = require('./categories');
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -107,6 +109,28 @@ router.post('/edit',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
     edit.post(req,res);
+});
+
+router.get('/categorizing',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    res.render('categorizing', {blogTitle:"Categorizing"});
+});
+
+router.post('/categorizing',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    categorizing(req, res).then(function(result){
+      res.redirect('/login/categories');
+    });
+});
+
+router.get('/categories',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    categories(req, res).then(function(result){
+      res.render('categories', {categoryList:result.categoryList, categoryNum:result.categoryNum, blogTitle:"Categories"});
+    });
 });
 
 module.exports = router;

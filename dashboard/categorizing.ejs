@@ -1,0 +1,68 @@
+<!--dashboard/categorizing.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  .categorizing{
+    min-height:540px;
+  }
+  .categorizing .title{
+    width:100%;
+    padding:5px 10px;
+    box-sizing:border-box;
+    font:16px/1.5 Anton,Bayon;
+    margin-bottom:5px;
+    color:rgb(107, 104, 104);
+  }
+  ::placeholder {
+    color: rgb(218, 216, 216);
+  }
+  
+  .categorizing #datepicker,.categorizing #timepicker{
+    padding:5px;
+    max-width:80px;
+  }
+  .categorizing label{
+    margin-top:5px;
+    padding:5px;
+    display:inline-block;
+    border:1px solid rgb(167, 166, 166);
+  }
+  .categorizing .submit{
+    font:14px/1.5 "Arial";
+    padding:11px 20px;
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div class="categorizing">
+
+      <form class="categorizing-submit" action="/login/categorizing" method="post">
+        <input name="category" class="title" placeholder="Category name" required="required" type="text" />
+
+        <script>
+          $(document).ready(function() {
+            $("#datepicker").datepicker();
+            $("#datepicker").attr('value',((new Date()).toLocaleDateString('km-KH')));
+            const time = (new Date()).toLocaleTimeString("km-KH");
+            $("#timepicker").attr('value', time);
+          });
+        </script> 
+
+        <label>Date:
+          <input name="date" type="text" id="datepicker">
+        </label>
+
+        <label>Time:
+          <input name="time" type="text" id="timepicker">
+        </label>
+  
+        <input id="submit"  class="submit" type="submit" value="Submit">
+      </form>
+  
+    </div><!--posting-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>
