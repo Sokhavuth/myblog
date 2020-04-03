@@ -1,4 +1,4 @@
-<!--posts.ejs-->
+<!--dashboard/categories.ejs-->
 <%- include("partials/header.ejs") %>
 
 <style>
@@ -65,7 +65,7 @@
           <div class="title-wrapper">
             <a href="<%- categoryList[i].url %>"><%- categoryList[i].category %></a>
             <a class="delete-edit" href="/login/delete/<%- categoryList[i].category %>/category">delete |</a>
-            <a class="delete-edit" href="/login/edit/<%- categoryList[i].category %>">edit</a> 
+            <a class="delete-edit" href="/login/edit/<%- categoryList[i].category %>/category">edit</a> 
           </div><!--title-wrapper-->
           <span><%- categoryList[i].author %></span>
           <span><%- categoryList[i].date %></span>

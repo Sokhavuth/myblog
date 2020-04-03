@@ -99,7 +99,7 @@ router.get('/delete/:id/:type',
     delet(req,res);
 });
 
-router.get('/edit/:id',
+router.get('/edit/:id/:type',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
     edit.get(req,res);
