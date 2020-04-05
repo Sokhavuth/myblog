@@ -14,6 +14,7 @@ const delet = require('./delete');
 const edit = require('./edit');
 const categorizing = require('./categorizing');
 const categories = require('./categories');
+const getcategory = require('./getcategory');
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -74,7 +75,7 @@ router.get('/logout',
 router.get('/posting',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
-    res.render('posting', {blogTitle:"Posting"});
+    getcategory(req,res);
 });
 
 router.post('/posting',
