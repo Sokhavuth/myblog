@@ -11,10 +11,12 @@ module.exports = function(req,res){
     if(req.params.type === "post"){
       collection = "posts";
       var myquery = { "id": req.params.id};
-    }
-    else if(req.params.type === "category"){
+    }else if(req.params.type === "category"){
       collection = "categories";
       var myquery = { "category": req.params.id};
+    }else if(req.params.type === "page"){
+      collection = "pages";
+      var myquery = { id: req.params.id};
     }
 
     dbo.collection(collection).deleteOne(myquery, function(err, result){
@@ -25,6 +27,8 @@ module.exports = function(req,res){
         res.redirect("/login/posts");
       else if(collection === "categories")
         res.redirect("/login/categories");
+      else if(collection === "pages")
+        res.redirect("/login/pages");
     });
 
   });

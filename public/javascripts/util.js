@@ -35,6 +35,7 @@ class Utility{
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.pageSize = pageSize;
     this.paginateObj.page += 1;
+    this.paginateObj.type = "post";
     $.ajax({
       type: 'POST',
       data: JSON.stringify(this.paginateObj),
@@ -69,7 +70,9 @@ class Utility{
     $('.pagination img').attr('src', '/images/loading.gif');
     this.paginateObj.page += 1;
     this.paginateObj.pageSize = pageSize;
-    this.paginateObj.catetory = category;
+    this.paginateObj.category = category;
+    this.paginateObj.type = "category";
+    
     $.ajax({
       type: 'POST',
       data: JSON.stringify(this.paginateObj),
@@ -103,6 +106,7 @@ class Utility{
   paginatePosts(pageNumber, event, pageSize){
     this.paginateObj.page = pageNumber;
     this.paginateObj.pageSize = pageSize;
+    this.paginateObj.type = "post";
     $('#post-list').append('<img class="loading" src="/images/loading.gif" />');
     $.ajax({
       type: 'POST',
@@ -158,6 +162,37 @@ class Utility{
         }
 
         $('#category-list').html(html);
+
+      }
+    });
+  }
+
+  paginatePages(pageNumber, event, pageSize){
+    this.paginateObj.page = pageNumber;
+    this.paginateObj.pageSize = pageSize;
+    this.paginateObj.type = 'page';
+    $('#page-list').append('<img class="loading" src="/images/loading.gif" />');
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(this.paginateObj),
+      contentType: 'application/json',
+      url: '/pagination',
+      success: function(pageObj){
+        const pageList = pageObj.itemList;
+        var html = '';
+
+        for(var i=0; i < pageList.length; i++){
+          html += '<div id="page-title" class="page-title">';
+            html += '<div class="title-wrapper">';
+              html += '<a href="'+pageList[i].url+'">'+pageList[i].title+'</a>';
+              html += '<a class="delete-edit" href="/login/delete/'+pageList[i].id+'/page">delete | </a>';
+              html += '<a class="delete-edit" href="/login/edit/'+pageList[i].id+'/page">edit</a>'; 
+            html += '</div><!--title-wrapper-->';
+            html += '<span>'+pageList[i].author+'</span>';
+          html += '</div>';
+        }
+
+        $('#page-list').html(html);
 
       }
     });

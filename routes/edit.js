@@ -11,10 +11,12 @@ module.exports.get = function(req,res){
     if(req.params.type === "post"){
       var collection = "posts";
       var myquery = {id:req.params.id};
-    }
-    else if(req.params.type === "category"){
+    }else if(req.params.type === "category"){
       var collection = "categories";
       var myquery = {category:req.params.id};
+    }else if(req.params.type === "page"){
+      var collection = "pages";
+      var myquery = {id:req.params.id};
     }
 
     dbo.collection(collection).find(myquery).toArray(function(err, result) {
@@ -27,7 +29,9 @@ module.exports.get = function(req,res){
       if(collection === "posts")
         res.render('edit', { user:req.user, postList:req.postList, blogTitle:"​​Edit" });
       else if(collection === "categories")
-        res.render('categoryEdit', {categoryList:req.postList, blogTitle:"​​Edit" })
+        res.render('categoryEdit', {categoryList:req.postList, blogTitle:"​​Edit" });
+      else if(collection === "pages")
+        res.render('pageEdit', {pageList:req.postList, blogTitle:"​​Edit" })
     }
 
   });

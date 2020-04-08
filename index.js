@@ -12,6 +12,7 @@ const postRouter = require('./routes/post');
 const paginationRouter = require('./routes/pagination');
 const categoryRouter = require('./routes/category');
 const searchRouter = require('./routes/search');
+const pageRouter = require('./routes/page');
  
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'dashboard')]);
 app.set('view engine', 'ejs');
@@ -28,6 +29,7 @@ app.use('/post/:id', postRouter);
 app.use('/pagination', paginationRouter);
 app.use('/category/:cat', categoryRouter);
 app.use('/search', searchRouter);
+app.use('/page/:id', pageRouter);
  
 app.listen(port, () => {
   console.log('The server is running at port '+port);

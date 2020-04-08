@@ -1,0 +1,96 @@
+<!--posts.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  #pages{
+    background:white;
+    padding:20px 20px 0;
+  }
+  .pages .page-title{
+    font:14px/1.5 "Odor Mean Chey";
+    padding:5px;
+    border-top:1px solid lightgrey;
+    display:grid;
+    grid-template-columns:auto 150px;
+  }
+  .pages .page-title:last-child{
+    border-bottom:1px solid lightgrey;
+  }
+  .pages .page-title a{
+    color:green;
+  } 
+  .pages .page-title a:hover{
+    color:rgb(1, 180, 1);
+  } 
+  .pages .page-title span{
+    text-align:right;
+    display:inline-block;
+  }
+  .pages .page-list{
+    min-height:480px;
+    position:relative;
+  }
+  .pages .loading{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .pages #pagination{
+    text-align:center;
+  }
+  .pages #pagination ul{
+    display:inline-block;
+    margin-top:15px;
+  }
+  .pages .title-wrapper a:nth-child(1) {
+    display:block;
+  }
+  .pages .delete-edit{
+    font:12px/1.5 Arial, Nokora;
+    visibility: hidden;
+  }
+  .pages .title-wrapper:hover > .delete-edit{
+    visibility: visible;
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div id="pages" class="pages">
+      <div id="page-list" class="page-list">
+      <% for(var i = 0; i < pageList.length; i++){ %>
+        <div id="page-title" class="page-title">
+          <div class="title-wrapper">
+            <a href="<%- pageList[i].url %>"><%- pageList[i].title %></a>
+            <a class="delete-edit" href="/login/delete/<%- pageList[i].id %>/page">delete |</a>
+            <a class="delete-edit" href="/login/edit/<%- pageList[i].id %>/page">edit</a> 
+          </div><!--title-wrapper-->
+          <span><%- pageList[i].author %></span>
+        </div>
+      <% } %>
+      </div><!--post-list-->
+      <div id="pagination" class="pagination"></div>
+      <script>
+        $(function(){
+          $('#pagination').pagination({
+            items: <%- pageNum %>,
+            itemsOnPage: <%- pageList.length %>,
+            displayedPages: 5,
+            onPageClick: paginatePages,
+            cssStyle: 'light-theme'
+          });
+        });
+
+        const util = new Utility();
+        
+        function paginatePages(pageNumver, event){
+          util.paginatePages(pageNumver-1, event, <%- pageList.length %>);
+        }
+      </script>
+    </div><!--pages-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>

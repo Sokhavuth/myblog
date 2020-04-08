@@ -15,6 +15,8 @@ const edit = require('./edit');
 const categorizing = require('./categorizing');
 const categories = require('./categories');
 const getcategory = require('./getcategory');
+const paging = require("./paging");
+const pages = require("./pages");
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -131,6 +133,28 @@ router.get('/categories',
   function(req, res){
     categories(req, res).then(function(result){
       res.render('categories', {categoryList:result.categoryList, categoryNum:result.categoryNum, blogTitle:"Categories"});
+    });
+});
+
+router.get('/paging',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    res.render('paging', {blogTitle:"Page"});
+});
+
+router.post('/paging',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    paging(req, res).then(function(result){
+      res.redirect('/login/pages');
+    });
+});
+
+router.get('/pages',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    pages(req, res).then(function(result){
+      res.render('pages', {pageList:result.pageList, pageNum:result.pageNum, blogTitle:"Pages"});
     });
 });
 

@@ -1,0 +1,54 @@
+<!--dashboard/pageEdit.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  .posting .title{
+    width:100%;
+    padding:5px 10px;
+    box-sizing:border-box;
+    font:16px/1.5 Anton,Bayon;
+    margin-bottom:5px;
+    color:rgb(107, 104, 104);
+  }
+  ::placeholder {
+    color: rgb(218, 216, 216);
+  }
+  .posting .category{
+    padding:5px;
+  }
+  .posting #datepicker,.posting #timepicker{
+    padding:5px;
+    max-width:80px;
+  }
+  .posting label{
+    margin-top:5px;
+    padding:5px;
+    display:inline-block;
+    border:1px solid rgb(167, 166, 166);
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div class="posting">
+
+      <form class="post-submit" action="/login/edit" method="post">
+        <input name="title" class="title" placeholder="Post title" value="<%- pageList[0].title %>" required="required" type="text" />
+        <textarea required="required" name="content" id="editor" ><%- pageList[0].content %></textarea>
+        <script>
+          CKEDITOR.replace( 'editor', {
+            height:360,
+          });
+
+        </script> 
+        
+        <input name="id" style="display:none;" value="<%- pageList[0].id %>" type="text" />
+        <input name="pagetype" id="submit" style="display:none;" class="submit" type="submit" value="page">
+      </form>
+  
+    </div><!--posting-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>

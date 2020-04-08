@@ -1,0 +1,53 @@
+<!--dashboard/paging.ejs-->
+<%- include("partials/header.ejs") %>
+
+<style>
+  .paging .title{
+    width:100%;
+    padding:5px 10px;
+    box-sizing:border-box;
+    font:16px/1.5 Anton,Bayon;
+    margin-bottom:5px;
+    color:rgb(107, 104, 104);
+  }
+  ::placeholder {
+    color: rgb(218, 216, 216);
+  }
+  .paging .category{
+    padding:5px;
+  }
+  .paging #datepicker,.paging #timepicker{
+    padding:5px;
+    max-width:80px;
+  }
+  .paging label{
+    margin-top:5px;
+    padding:5px;
+    display:inline-block;
+    border:1px solid rgb(167, 166, 166);
+  }
+</style>
+
+<div id="main-content" class="main-content">
+  <%- include("partials/sidebar.ejs") %>
+  <div id="content" class="content">
+    <div class="paging">
+
+      <form class="post-submit" action="/login/paging" method="post">
+        <input name="title" class="title" placeholder="Page title" required="required" type="text" />
+        <textarea required="required" name="content" id="editor" ></textarea>
+        <script>
+          CKEDITOR.replace( 'editor', {
+            height:360,
+          });
+          
+        </script> 
+  
+        <input id="submit" style="display:none;" class="submit" type="submit" value="submit">
+      </form>
+  
+    </div><!--paging-->
+  </div><!--content-->
+</div><!--main-content-->
+
+<%- include("partials/footer.ejs") %>
