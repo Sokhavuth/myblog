@@ -77,7 +77,7 @@ router.get('/logout',
 router.get('/posting',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
-    getcategory(req,res);
+    getcategory(req,res, 'posting');
 });
 
 router.post('/posting',
@@ -105,7 +105,8 @@ router.get('/delete/:id/:type',
 router.get('/edit/:id/:type',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
-    edit.get(req,res);
+    //edit.get(req,res);
+    getcategory(req,res, "editing");
 });
 
 router.post('/edit',

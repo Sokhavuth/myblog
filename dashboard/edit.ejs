@@ -47,15 +47,17 @@
             $("#timepicker").attr('value', '<%- postList[0].time %>');
           });
         </script> 
-  
-        <label>Publish in category:
-          <select name="category" class="category">
-            <option value="News">News</option>
-          </select>
-        </label>
 
+        <label>Publish in category:
+          <select name="category" id="category" class="category"></select>
+        </label>
+        <% for (var i=0; i < categoryList.length; i++) { %>
+          <script>
+          $('#category').append('<option value="<%- categoryList[i].category %>"><%- categoryList[i].category %></option>');
+          </script>
+        <% } %>
         <script>
-          $(".category").val("<%- postList[0].category %>");
+          $('select').val('<%- postList[0].category %>');
         </script>
 
         <label>Date:

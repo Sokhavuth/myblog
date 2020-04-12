@@ -27,7 +27,7 @@ module.exports.get = function(req,res){
 
     function getData(){
       if(collection === "posts")
-        res.render('edit', { user:req.user, postList:req.postList, blogTitle:"​​Edit" });
+        res.render('edit', { user:req.user, postList:req.postList, categoryList:req.categoryList, blogTitle:"​​Edit" });
       else if(collection === "categories")
         res.render('categoryEdit', {categoryList:req.postList, blogTitle:"​​Edit" });
       else if(collection === "pages")
