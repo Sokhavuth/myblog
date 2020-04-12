@@ -50,6 +50,10 @@ module.exports.post = function(req,res){
       var collection = "categories";
       var myquery = { category: req.body.oricategory};
       var newvalues = { $set: { time:req.body.time, date:req.body.date, category:req.body.category} };
+    }else if(req.body.pagetype === "page"){
+      var collection = "pages";
+      var myquery = { id: req.body.id};
+      var newvalues = { $set: { title:req.body.title, content:req.body.content } };
     }
     
       dbo.collection(collection).updateOne(myquery,newvalues, function(err, result){
@@ -59,7 +63,8 @@ module.exports.post = function(req,res){
           res.redirect('/login/posts');
         else if(collection === "categories")
           res.redirect("/login/categories");
-
+        else if(collection === "pages")
+          res.redirect("/login/pages");
       });
   });
 }
