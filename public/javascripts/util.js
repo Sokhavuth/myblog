@@ -122,7 +122,7 @@ class Utility{
             html += '<div class="title-wrapper">';
               html += '<a href="'+postList[i].url+'">'+postList[i].title+'</a>';
               html += '<a class="delete-edit" href="/login/delete/'+postList[i].id+'/post">delete | </a>';
-              html += '<a class="delete-edit" href="/login/edit/'+postList[i].id+'">edit</a>'; 
+              html += '<a class="delete-edit" href="/login/edit/'+postList[i].id+'/post">edit</a>'; 
             html += '</div><!--title-wrapper-->';
             html += '<span>'+postList[i].author+'</span>';
             html += '<span>'+postList[i].date+'</span>';

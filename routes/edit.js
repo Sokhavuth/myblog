@@ -45,7 +45,7 @@ module.exports.post = function(req,res){
     if(req.body.posttype === "submit"){
       var collection = "posts";
       var myquery = { id: req.body.id};
-      var newvalues = { $set: { type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
+      var newvalues = { $set: { date:req.body.date, time:req.body.time ,type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
     }else if(req.body.categorytype === "Submit"){
       var collection = "categories";
       var myquery = { category: req.body.oricategory};
