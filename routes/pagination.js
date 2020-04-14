@@ -28,7 +28,7 @@ router.post('/', function(req, res){
       var query = {};
     }
 
-    dbo.collection(collection).find(query).sort({date: -1, time: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
+    dbo.collection(collection).find(query).sort({unixTime: -1}).skip(skips).limit(req.body.pageSize).toArray(function(err, result) {
       if (err) throw err;
       db.close().then(getItems(result));
     });

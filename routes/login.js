@@ -159,4 +159,10 @@ router.get('/pages',
     });
 });
 
+router.get('/vidgen',
+  ifLogedin.ensureLoggedIn('/login'),
+  function(req, res){
+    res.render('videogenerator', {blogTitle:"Video Generator"});
+});
+
 module.exports = router;

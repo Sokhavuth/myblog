@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+body{
+  font: 14px/1.75 "Odor Mean Chey";
+  background: lavender;
+}
+#main-wrapper{
+  background: white;
+  width: 700px;
+  margin: 50px auto;
+  padding: 20px;
+}
+#panel{
+  width: 100%;
+  height: 100px;
+}
+.code-wrapper{
+  display: none;
+}
+</style>
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+<script src='https://apis.google.com/js/api.js'></script>
+<link href='https://fonts.googleapis.com/css?family=Odor+Mean+Chey' rel='stylesheet'/>
+
+<script>
+function setPostBody(){    
+  var DEVobj = getFormData();   
+  var postBody = '';      
+  if(DEVobj.videoType=='youtube')     
+    postBody = '<a><img border="0" src="https://i.ytimg.com/vi/'+DEVobj.videoID+'/mqdefault.jpg" /></a>';
+
+  if(DEVobj.videoType=='facebookvid')     
+    postBody = '<a><img border="0" src="https://graph.facebook.com/'+DEVobj.videoID+'/picture" /></a>';    
+      
+  postBody += '<div class="__VERSION1__ __video-id__" data-id="'+DEVobj.videoType+'{'+DEVobj.videoID+'}"> </div>';    
+  var pl =(DEVobj.playlist) ? 'pl':'';  
+
+  if(pl)     
+    postBody += '<div class="__playlist__" data-pl="'+pl+'['+DEVobj.title+']"> </div>';   
+  else      
+    postBody += '<div class="__playlist__" data-pl=""> </div> '; 
+
+  postBody += '<div class="__description__">'+'Write video description here'+'</div>';
+
+  return postBody; 
+}  
+
+function getFormData() {
+  var DEVobj = {};
+  DEVobj.videoID = document.forms["DEVForm"]["Video-ID"].value;   
+  DEVobj.videoType = $("input:radio[name=option]:checked").val();   
+  DEVobj.playlist = document.forms["DEVForm"]["Playlist"].checked;   
+  DEVobj.title= document.forms["DEVForm"]["Title"].value;     
+  return DEVobj; 
+}  
+  
+function getValue(){   
+  var value = document.forms["DEVForm"]["Playlist"].checked;   
+  if(value ){     
+    document.forms["DEVForm"]["Title"].disabled = false;   
+  } else{     
+    document.forms["DEVForm"]["Title"].disabled = true;   
+    } 
+}  
+
+function postGenerator(){     
+  document.getElementById('panel').value = setPostBody();
+  $(".code-wrapper").css('display','block')
+  }  
+</script>
+
+<div id="main-wrapper">
+<form name="DEVForm" onsubmit="postGenerator();"  target="formDestination">
+<table>
+<tr> <td class="content-title">Video Platform:</td> <td><input type="radio" name="option" value="youtube" checked> YouTube 
+<input type="radio" name="option" value="facebookvid"> Facebook 
+<input type="radio" name="option" value="googledrive"> Goolge Drive 
+<input type="radio" name="option" value="dailymotion"> Dailymotion 
+<input type="radio" name="option" value="vimeo"> Vimeo  </td> </tr>
+<tr> <td class="content-title">Video ID:</td><td><input type="text" name="Video-ID" size="30" required></td> </tr>
+<tr> <td class="content-title">Create Episode:</td><td><input type="checkbox" name="Playlist" onclick="getValue()"> Click here to create episode</td> </tr>
+<tr> <td class="content-title">Category:</td><td><input disabled type="text" name="Title" size="30" ></td> </tr>
+</table>
+
+<div><input style="font:14px 'Odor Mean Chey';padding:5px 10px;margin-top:20px;" type="submit" value="Submit" /></div>    
+<iframe name="formDestination" style="visibility: hidden;height:0px"></iframe>
+</form>
+
+<div class="code-wrapper">
+<h2>Copy and past the source code below​ into CKEDITOR</h2>
+  <textarea id="panel" onclick="this.select();"></textarea>
+</div>
+
+</div>
+
+</body>
+</html>

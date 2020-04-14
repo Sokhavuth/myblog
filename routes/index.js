@@ -9,7 +9,7 @@ router.get('/', function(req, res){
   MongoClient.connect(url, {useUnifiedTopology:true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    dbo.collection("posts").find({}).sort({date: -1, time: -1}).limit(5).toArray(function(err, result) {
+    dbo.collection("posts").find({}).sort({unixTime: -1}).limit(5).toArray(function(err, result) {
       if (err) throw err;
       req.postList = result;
       db.close().then(getPost());

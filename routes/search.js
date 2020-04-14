@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
     var dbo = db.db("mydb");
     var query = { content: { $regex: req.body.query } };
     
-    dbo.collection("posts").find(query).sort({date: -1}).limit(30).toArray(function(err, result){
+    dbo.collection("posts").find(query).sort({unixTime: -1}).limit(30).toArray(function(err, result){
       if (err) throw err;
       req.postList = result;
       db.close().then(getPost(result));

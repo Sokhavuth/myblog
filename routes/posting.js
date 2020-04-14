@@ -14,9 +14,10 @@ module.exports = function(req, res){
     
       const postId = (new Date()).getTime().toString(36) + Math.random().toString(36).slice(2);
       const thumbUrl = util.getThumbUrl(req.body.content);
+      const unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
 
       var records = [
-        {thumbUrl:thumbUrl, url:"/post/"+postId, time:req.body.time, date:req.body.date, id:postId, author:req.user.displayName, 
+        {thumbUrl:thumbUrl, url:"/post/"+postId, unixTime:unixTime,time:req.body.time, date:req.body.date, id:postId, author:req.user.displayName, 
         title:req.body.title, content:req.body.content, category:req.body.category}
       ];
 

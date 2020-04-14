@@ -27,9 +27,24 @@
     <% if(postList.length > 0) { %>
       <div class="post-title"><%- postList[0].title %></div>
       <div class="post-meta"><%- postList[0].date %></div>
-      <div class="post-content"><%- postList[0].content %></div>
+      <div id='__KBPlayer__'>
+        <div id="post-content" class="post-content">
+          <%- postList[0].content %>
+        </div><!-- .entry-content -->
+      </div><!--__KBPlayer__-->
     <% } %>
     </div><!--post-->
+
+    <script>
+    $(document).ready(function(){ 
+      var str = $('.post-content').html();
+      if(str.indexOf('__video-id__') != -1){
+        $('#__KBPlayer__').attr('id', 'KBPlayer');
+        const util = new Utility();
+        util.setPostVid('post-content'); 
+      }
+    });
+    </script>
 
     <div id="disqus_thread"></div>
     <script>

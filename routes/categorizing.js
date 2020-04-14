@@ -10,8 +10,10 @@ module.exports = function(req, res){
       if (err) throw err;
       var dbo = db.db("mydb");
 
+      var unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
+      
       var records = [
-        {url:"/category/"+req.body.category, time:req.body.time, date:req.body.date, author:req.user.displayName, category:req.body.category}
+        { unixTime:unixTime ,url:"/category/"+req.body.category, time:req.body.time, date:req.body.date, author:req.user.displayName, category:req.body.category}
       ];
 
       dbo.collection("categories").insertMany(records, function(err, result){

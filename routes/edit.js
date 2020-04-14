@@ -45,11 +45,13 @@ module.exports.post = function(req,res){
     if(req.body.posttype === "submit"){
       var collection = "posts";
       var myquery = { id: req.body.id};
-      var newvalues = { $set: { date:req.body.date, time:req.body.time ,type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
+      var unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
+      var newvalues = { $set: { unixTime:unixTime, date:req.body.date, time:req.body.time ,type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
     }else if(req.body.categorytype === "Submit"){
       var collection = "categories";
+      var unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
       var myquery = { category: req.body.oricategory};
-      var newvalues = { $set: { time:req.body.time, date:req.body.date, category:req.body.category} };
+      var newvalues = { $set: { unixTime:unixTime, time:req.body.time, date:req.body.date, category:req.body.category} };
     }else if(req.body.pagetype === "page"){
       var collection = "pages";
       var myquery = { id: req.body.id};

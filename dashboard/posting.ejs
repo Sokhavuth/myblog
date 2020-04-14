@@ -26,6 +26,11 @@
     display:inline-block;
     border:1px solid rgb(167, 166, 166);
   }
+  .posting .vid-gen{
+    margin-top:5px;
+    padding:11px 10px;
+    font-size:14px;
+  }
 </style>
 
 <div id="main-content" class="main-content">
@@ -65,6 +70,8 @@
         <label>Time:
           <input name="time" type="text" id="timepicker">
         </label>
+
+        <input class="vid-gen" onclick="window.open('/login/vidgen','_blank')" value="Video Generator" type="button">
   
         <input id="submit" style="display:none;" class="submit" type="submit" value="submit">
       </form>
