@@ -14,7 +14,7 @@
   position:relative;
 }
 .index .post-outer .img-outer{
-  position: absolute;
+  position:absolute;
   top: 0;
   left: 0;
   bottom:0;
@@ -24,6 +24,14 @@
 .index .post-outer img{
   width:100%;
   min-height:100%;
+}
+.index .post-outer .play-icon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:25%;
+  min-height:auto;
 }
 .index .post-outer .post-title{
   font:18px/1.5 Anton, Bayon;
@@ -55,7 +63,7 @@
         <div class="post-outer">
           <div class="thumb">
             <div class="img-outer">
-              <a href="<%- postList[i].url %>"><img src="<%- postList[i].thumbUrl %>" /></a>
+              <a href="<%- postList[i].url %>"><%- postList[i].thumbUrl %></a>
             </div><!--img-outer-->
           </div><!--thumb-->
           <div class="post-entry">

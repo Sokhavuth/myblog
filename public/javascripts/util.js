@@ -49,7 +49,7 @@ class Utility{
           html += '<div class="post-outer">';
             html += '<div class="thumb">';
               html += '<div class="img-outer">';
-                html += '<a href="'+postList[i].url+'"><img src="'+postList[i].thumbUrl+'" /></a>';
+                html += '<a href="'+postList[i].url+'">'+postList[i].thumbUrl+'</a>';
               html += '</div><!--img-outer-->';
             html += '</div><!--thumb-->';
             html += '<div class="post-entry">';
@@ -86,7 +86,7 @@ class Utility{
           html += '<div class="post-outer">';
             html += '<div class="thumb">';
               html += '<div class="img-outer">';
-                html += '<a href="'+postList[i].url+'"><img src="'+postList[i].thumbUrl+'" /></a>';
+                html += '<a href="'+postList[i].url+'">'+postList[i].thumbUrl+'</a>';
               html += '</div><!--img-outer-->';
               html += '<div class="post-date">'+postList[i].date+'</div>';
             html += '</div><!--thumb-->';
@@ -198,7 +198,7 @@ class Utility{
     });
   }
 
-  setPostVid(postId,rootDir){
+  setPostVid(postId){
     var playlist = document.createElement( 'div' );
     var description = document.createElement( 'div');
     var post = document.getElementById(postId);
@@ -237,8 +237,8 @@ class Utility{
   
     else if(str.indexOf('facebookvid') != -1){
       var iframeSrc = 'https://www.facebook.com/video.php?v='+vidId;
-      fbLink = 'https://www.facebook.com/video.php?v='+vidId;
-      fbVid = true;
+      //fbLink = 'https://www.facebook.com/video.php?v='+vidId;
+      //fbVid = true;
       
     }
      

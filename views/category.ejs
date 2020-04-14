@@ -23,6 +23,14 @@
   width:100%;
   min-height:100%;
 }
+.category .post-outer .play-icon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:25%;
+  min-height:auto;
+}
 .category .post-outer .post-title{
   font:14px/1.5 "Sriracha", "Odor Mean Chey";
   color:rgb(71, 70, 70);
@@ -54,7 +62,7 @@
         <div class="post-outer">
           <div class="thumb">
             <div class="img-outer">
-              <a href="<%- postList[i].url %>"><img src="<%- postList[i].thumbUrl %>" /></a>
+              <a href="<%- postList[i].url %>"><%- postList[i].thumbUrl %></a>
             </div><!--img-outer-->
             <div class="post-date"><%- postList[i].date %></div>
           </div><!--thumb-->

@@ -1,6 +1,8 @@
 /* routes/edit.js */
 var MongoClient = require('mongodb').MongoClient;
 var url = require('./config').mongoDBurl;
+const Utility = require('./util');
+const util = new Utility();
 
 module.exports.get = function(req,res){
   MongoClient.connect(url, {useUnifiedTopology:true }, function(err, db) {
@@ -45,8 +47,9 @@ module.exports.post = function(req,res){
     if(req.body.posttype === "submit"){
       var collection = "posts";
       var myquery = { id: req.body.id};
+      var thumbUrl = util.getThumbUrl(req.body.content);
       var unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
-      var newvalues = { $set: { unixTime:unixTime, date:req.body.date, time:req.body.time ,type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
+      var newvalues = { $set: { thumbUrl:thumbUrl, unixTime:unixTime, date:req.body.date, time:req.body.time ,type:req.body.postpage, author:req.user.displayName, title:req.body.title, content:req.body.content, category:req.body.category} };
     }else if(req.body.categorytype === "Submit"){
       var collection = "categories";
       var unixTime = (new Date(req.body.date+' '+req.body.time)).getTime();
