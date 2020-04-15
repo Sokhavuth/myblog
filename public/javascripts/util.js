@@ -198,6 +198,43 @@ class Utility{
     });
   }
 
+  setPlaylist(playlist){
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify({playlist:playlist}),
+      contentType: 'application/json',
+      url: '/playlist',
+      success: function(postObj){
+        const postList = postObj.itemList;
+        var html = '';
+        var focusPart = '';
+        
+        html = ('<div id="relatedPosts" >');
+        for(var i=0; i<postList.length; i++){
+          html += ('<a href="'+postList[i].url+'">');
+          html += ('<div class="div-part" id="Part'+i+'" >');
+          html += (postList[i].thumbUrl);
+          html += ('<div class="episode">'+(postList.length-i)+'</div>');
+          html += ('</div>');
+          html += ('</a>');
+        }  
+        html += ('</div>');
+
+        $('#KBPlayer').append(html);
+
+        $(document).ready(function(){
+          $('#relatedPosts').css({'display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'6px'});
+          $('#relatedPosts .div-part').css({'position':'relative'});
+          $('#relatedPosts img').css({'width':'100%'});
+          $('#relatedPosts a').css({'display':'block'});
+          $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
+          $('#relatedPosts .play-icon').css('display', 'none');
+        });
+        
+      }
+    });
+  }
+
   setPostVid(postId){
     var playlist = document.createElement( 'div' );
     var description = document.createElement( 'div');
@@ -237,9 +274,6 @@ class Utility{
   
     else if(str.indexOf('facebookvid') != -1){
       var iframeSrc = 'https://www.facebook.com/video.php?v='+vidId;
-      //fbLink = 'https://www.facebook.com/video.php?v='+vidId;
-      //fbVid = true;
-      
     }
      
     if(str.indexOf('facebookvid') != -1){
@@ -268,14 +302,10 @@ class Utility{
      
     str = playlist.innerHTML;
      if(str.indexOf('pl') != -1){
-       var startIndex = str.indexOf('[');
-       var endIndex = str.indexOf(']');
-       this.pl = str.slice(startIndex+1,endIndex);
-      /*
-       $.ajax({url: rootDir+"/wp-json/wp/v2/posts?order=asc&tags="+this.pl, success: function(json){
-        __KBobject__.getRelatedPost(json);    
-       }});
-       */
+      var startIndex = str.indexOf('[');
+      var endIndex = str.indexOf(']');
+      const pl = str.slice(startIndex+1,endIndex);
+      this.setPlaylist(pl);
      }   
   }
     

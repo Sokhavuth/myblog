@@ -27,7 +27,8 @@
     margin-top:30px;
     padding:37px;
     overflow:hidden;
-    background:url("/images/quote.png");
+    background:rgb(180, 1, 1);
+    /*background:url("/images/quote.png");
     background-repeat: no-repeat;
     background-size: 100%;
     /*transform: rotate3d(1, 0, 0, 55deg);*/
@@ -35,27 +36,32 @@
   .post .quote .frame{
     overflow:hidden;
     height:310px;
-    background:lightgrey;
+    background:rgb(241, 51, 51);
   }
   .post .quote img{
-    min-height:100%;
+    /*min-height:100%;*/
+    width:40%;
+    margin:10px;
   }
   .post .quote .sentence{
     position:absolute;
-    width:80%;
+    width:45%;
     color:white;
-    text-shadow: 2px 2px 4px #000000;
-    font: 20px/1.5 Anton,Koulen;
-    top:78%;
+    /*text-shadow: 2px 2px 4px #000000;*/
+    color: maroon;
+    text-shadow: 0px 1px 0px rgba(236, 220, 220, 0.5);
+    font: 20px/1.75 Anton,Moulpali;
+    text-align:left;
+    top:50%;
     left:50%;
-    transform:translate(-50%, -50%);
+    transform:translate(-10%, -50%);
     /*text-shadow:0px 0px 0 rgb(231,231,231),1px 1px 0 rgb(216,216,216),2px 2px 0 rgb(202,202,202),3px 3px 0 rgb(187,187,187),4px 4px 0 rgb(173,173,173),5px 5px 0 rgb(158,158,158), 6px 6px 0 rgb(144,144,144),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);*/
   }
   .post .quote .sentence .author{
-    margin-top:5px;
-    font:14px/1.5 Sriracha,"Odor Mean Chey";
+    margin-top:10px;
+    font:16px/1.75 Sriracha,"Odor Mean Chey";
     text-align:right;
-    text-shadow: 2px 2px 4px #000000;
+    /*text-shadow: 2px 2px 4px #000000;*/
   }
   .post .quote-round{
     position:relative;
@@ -77,7 +83,7 @@
     color:white;
     text-shadow: 2px 2px 4px #000000;
     font: 20px/1.5 Anton,Koulen;
-    top:75%;
+    top:80%;
     left:50%;
     transform:translate(-50%, -50%);
     /*text-shadow:0px 0px 0 rgb(231,231,231),1px 1px 0 rgb(216,216,216),2px 2px 0 rgb(202,202,202),3px 3px 0 rgb(187,187,187),4px 4px 0 rgb(173,173,173),5px 5px 0 rgb(158,158,158), 6px 6px 0 rgb(144,144,144),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);*/
@@ -85,7 +91,7 @@
   .post .quote-round .sentence .author{
     margin-top:10px;
     font:14px/1.5 Sriracha,"Odor Mean Chey";
-    text-align:center;
+    text-align:right;
     text-shadow: 2px 2px 4px #000000;
   }
 </style>
