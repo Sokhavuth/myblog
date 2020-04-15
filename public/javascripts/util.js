@@ -225,10 +225,10 @@ class Utility{
         $('#KBPlayer').append(html);
 
         $(document).ready(function(){
-          $('#relatedPosts').css({'display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'6px'});
+          $('#relatedPosts').css({'display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'3px 6px'});
           $('#relatedPosts .div-part').css({'position':'relative'});
           $('#relatedPosts img').css({'width':'100%'});
-          $('#relatedPosts a').css({'display':'block'});
+          //$('#relatedPosts a').css({'display':'block'});
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
           $('#relatedPosts .play-icon').css('display', 'none');
           $('#relatedPosts .active img').css('opacity', '.5');
