@@ -198,7 +198,7 @@ class Utility{
     });
   }
 
-  setPlaylist(playlist){
+  setPlaylist(playlist,postId){
     $.ajax({
       type: 'POST',
       data: JSON.stringify({playlist:playlist}),
@@ -207,12 +207,14 @@ class Utility{
       success: function(postObj){
         const postList = postObj.itemList;
         var html = '';
-        var focusPart = '';
         
         html = ('<div id="relatedPosts" >');
         for(var i=0; i<postList.length; i++){
           html += ('<a href="'+postList[i].url+'">');
-          html += ('<div class="div-part" id="Part'+i+'" >');
+          if(postList[i].id === postId)
+            html += ('<div class="div-part active" id="Part'+i+'" >');
+          else
+            html += ('<div class="div-part" id="Part'+i+'" >');
           html += (postList[i].thumbUrl);
           html += ('<div class="episode">'+(postList.length-i)+'</div>');
           html += ('</div>');
@@ -229,13 +231,14 @@ class Utility{
           $('#relatedPosts a').css({'display':'block'});
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
           $('#relatedPosts .play-icon').css('display', 'none');
+          $('#relatedPosts .active img').css('opacity', '.5');
         });
         
       }
     });
   }
 
-  setPostVid(postId){
+  setPostVid(postId,id){
     var playlist = document.createElement( 'div' );
     var description = document.createElement( 'div');
     var post = document.getElementById(postId);
@@ -305,7 +308,7 @@ class Utility{
       var startIndex = str.indexOf('[');
       var endIndex = str.indexOf(']');
       const pl = str.slice(startIndex+1,endIndex);
-      this.setPlaylist(pl);
+      this.setPlaylist(pl,id);
      }   
   }
     

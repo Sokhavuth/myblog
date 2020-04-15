@@ -43,7 +43,7 @@
       if(str.indexOf('__video-id__') != -1){
         $('#__KBPlayer__').attr('id', 'KBPlayer');
         const util = new Utility();
-        util.setPostVid('post-content'); 
+        util.setPostVid('post-content','<%- postList[0].id %>'); 
       }
     });
     </script>
