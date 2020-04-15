@@ -210,6 +210,7 @@ class Utility{
         
         html = ('<div id="relatedPosts" >');
         for(var i=0; i<postList.length; i++){
+          
           html += ('<a href="'+postList[i].url+'">');
           if(postList[i].id === postId)
             html += ('<div class="div-part active" id="Part'+i+'" >');
@@ -232,6 +233,7 @@ class Utility{
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
           $('#relatedPosts .play-icon').css('display', 'none');
           $('#relatedPosts .active img').css('opacity', '.5');
+          $('#relatedPosts').css({'height':'440px','overflow-y':'scroll'});
         });
         
       }
