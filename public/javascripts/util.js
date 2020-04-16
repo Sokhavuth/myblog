@@ -231,10 +231,11 @@ class Utility{
           $('#relatedPosts img').css({'width':'100%'});
           //$('#relatedPosts a').css({'display':'block'});
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
-          $('#relatedPosts .play-icon').css('display', 'none');
+          $('#relatedPosts .play-icon').css({'position':'absolute','top':'50%','left':'50%','transform':'translate(-50%,-50%)','width':'25%'});
           $('#relatedPosts .active img').css('opacity', '.5');
           $('#relatedPosts').css({'height':'440px','overflow-y':'scroll'});
           $(".active")[0].scrollIntoView();
+
         });
         
       }
