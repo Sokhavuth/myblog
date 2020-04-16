@@ -198,7 +198,7 @@ class Utility{
     });
   }
 
-  setPlaylist(playlist,postId){
+  setPlaylist(playlist,postId,description){
     $.ajax({
       type: 'POST',
       data: JSON.stringify({playlist:playlist}),
@@ -222,20 +222,20 @@ class Utility{
           html += ('</a>');
         }  
         html += ('</div>');
+        html += description.innerHTML;
 
         $('#KBPlayer').append(html);
 
         $(document).ready(function(){
-          $('#relatedPosts').css({'display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'3px 6px'});
+          $('#relatedPosts').css({'margin-bottom':'20px','display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'3px 6px'});
           $('#relatedPosts .div-part').css({'position':'relative'});
           $('#relatedPosts img').css({'width':'100%'});
-          //$('#relatedPosts a').css({'display':'block'});
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
           $('#relatedPosts .play-icon').css({'position':'absolute','top':'50%','left':'50%','transform':'translate(-50%,-50%)','width':'25%'});
           $('#relatedPosts .active img').css('opacity', '.5');
           $('#relatedPosts').css({'height':'440px','overflow-y':'scroll'});
           $(".active")[0].scrollIntoView();
-
+          //$("#relatedPosts").append(description.innerHTML);
         });
         
       }
@@ -244,16 +244,14 @@ class Utility{
 
   setPostVid(postId,id){
     var playlist = document.createElement( 'div' );
-    var description = document.createElement( 'div');
+    this.description = document.createElement( 'div');
+    this.description.className = "description";
     var post = document.getElementById(postId);
-    var kbplayer = document.getElementById("KBPlayer");
-    var Playlistt = [];
     
     var str = post.getElementsByClassName("__video-id__")[0].getAttribute("data-id");
     playlist.innerHTML = post.getElementsByClassName("__playlist__")[0].getAttribute("data-pl");
-    description.innerHTML = post.getElementsByClassName("__description__")[0].innerHTML;
+    this.description.innerHTML = post.getElementsByClassName("__description__")[0].innerHTML;
     
-    kbplayer.parentElement.insertBefore(description, kbplayer.nextSibling);
     var startIndex = str.indexOf('{');
     var endIndex = str.indexOf('}');
     var vidId = str.slice(startIndex+1,endIndex);
@@ -312,7 +310,9 @@ class Utility{
       var startIndex = str.indexOf('[');
       var endIndex = str.indexOf(']');
       const pl = str.slice(startIndex+1,endIndex);
-      this.setPlaylist(pl,id);
+      this.setPlaylist(pl,id,this.description);
+     }else{
+       post.innerHTML += this.description.innerHTML;
      }   
   }
     
