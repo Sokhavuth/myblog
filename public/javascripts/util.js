@@ -235,7 +235,6 @@ class Utility{
           $('#relatedPosts .active img').css('opacity', '.5');
           $('#relatedPosts').css({'height':'440px','overflow-y':'scroll'});
           $(".active")[0].scrollIntoView();
-          //$("#relatedPosts").append(description.innerHTML);
         });
         
       }
