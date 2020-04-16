@@ -265,7 +265,11 @@ class Utility{
       var iframeSrc = '//www.youtube.com/embed/'+vidId;
   
     }
-  
+
+    else if(str.indexOf('okvid') != -1){
+      var iframeSrc = '//ok.ru/videoembed/'+vidId;
+    }
+    
     else if(str.indexOf('dailymotion') != -1){
       var iframeSrc = '//www.dailymotion.com/embed/video/'+vidId+'?logo=0&info=0';
   
@@ -276,11 +280,11 @@ class Utility{
   
     }
   
-    else if(str.indexOf('facebookvid') != -1){
+    else if(str.indexOf('fbvid') != -1){
       var iframeSrc = 'https://www.facebook.com/video.php?v='+vidId;
     }
      
-    if(str.indexOf('facebookvid') != -1){
+    if(str.indexOf('fbvid') != -1){
       var postContent = '<p width="100%" id="fb-outer">';
       postContent += '<div class="fb-video" data-width="500" data-autoplay="false" data-allowfullscreen="true" data-href="'+iframeSrc+'"></div>';
       postContent += '</p>'; 
@@ -294,7 +298,7 @@ class Utility{
   
     var Player = post.getElementsByTagName('iframe');
      
-    if(str.indexOf('facebookvid') != -1){
+    if(str.indexOf('fbvid') != -1){
       var vidWidth = post.getElementsByTagName('p');
       var Player = post.getElementsByTagName('div');
       Player[0].setAttribute("data-width", vidWidth[0].clientWidth);

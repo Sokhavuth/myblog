@@ -31,9 +31,6 @@ function setPostBody(){
   var postBody = '';      
   if(DEVobj.videoType=='youtube')     
     postBody = '<a><img border="0" src="https://i.ytimg.com/vi/'+DEVobj.videoID+'/mqdefault.jpg" /></a>';
-
-  if(DEVobj.videoType=='facebookvid')     
-    postBody = '<a><img border="0" src="https://graph.facebook.com/'+DEVobj.videoID+'/picture" /></a>';    
       
   postBody += '<div class="__VERSION1__ __video-id__" data-id="'+DEVobj.videoType+'{'+DEVobj.videoID+'}"> </div>';    
   var pl =(DEVobj.playlist) ? 'pl':'';  
@@ -75,8 +72,10 @@ function postGenerator(){
 <div id="main-wrapper">
 <form name="DEVForm" onsubmit="postGenerator();"  target="formDestination">
 <table>
-<tr> <td class="content-title">Video Platform:</td> <td><input type="radio" name="option" value="youtube" checked> YouTube 
-<input type="radio" name="option" value="facebookvid"> Facebook 
+<tr> <td class="content-title">Video Platform:</td> <td>
+<input type="radio" name="option" value="youtube" checked> YouTube 
+<input type="radio" name="option" value="okvid"> OK 
+<input type="radio" name="option" value="fbvid"> Facebook 
 <input type="radio" name="option" value="googledrive"> Goolge Drive 
 <input type="radio" name="option" value="dailymotion"> Dailymotion 
 <input type="radio" name="option" value="vimeo"> Vimeo  </td> </tr>
