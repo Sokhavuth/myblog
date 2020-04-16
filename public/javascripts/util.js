@@ -227,7 +227,7 @@ class Utility{
         $('#KBPlayer').append(html);
 
         $(document).ready(function(){
-          $('#relatedPosts').css({'margin-bottom':'20px','display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'3px 6px'});
+          $('#relatedPosts').css({'margin-bottom':'20px','display':'grid', 'grid-template-columns':'calc(33.333% - 4px) calc(33.333% - 4px) calc(33.333% - 4px)','grid-gap':'1px 6px'});
           $('#relatedPosts .div-part').css({'position':'relative'});
           $('#relatedPosts img').css({'width':'100%'});
           $('#relatedPosts .episode').css({'position':'absolute','top':'5px','right':'5px','color':'white','background':'#00b3b3','padding':5,'border-radius':'50%'});
