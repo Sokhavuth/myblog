@@ -17,6 +17,7 @@ const categories = require('./categories');
 const getcategory = require('./getcategory');
 const paging = require("./paging");
 const pages = require("./pages");
+const upload = require("./upload")
 
 router.use('/',function(req,res,next){
   users.getUsers().then(function(result){
@@ -163,6 +164,18 @@ router.get('/vidgen',
   ifLogedin.ensureLoggedIn('/login'),
   function(req, res){
     res.render('videogenerator', {blogTitle:"Video Generator"});
+});
+
+router.get('/upload', 
+ifLogedin.ensureLoggedIn('/login'),
+function(req, res) {
+  res.render('upload');
+});
+
+router.post('/upload', 
+  ifLogedin.ensureLoggedIn('/login'),
+  upload().single('fileToUpload'), (req, res) => {
+    res.render('uploaded',{fileUrl:'/media/'+req.fileName});
 });
 
 module.exports = router;

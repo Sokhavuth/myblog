@@ -1,0 +1,43 @@
+<!--upload.ejs-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload page</title>
+    <link rel='stylesheet' href='/stylesheets/upload.css' />
+    <link href="https://fonts.googleapis.com/css?family=Koulen|Shrikhand|Sriracha&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/site_logo.png">
+  </head>
+  <body>
+    <div class="form-outer">
+    <div class="title">Upload page</div>
+    
+    <form action="/login/upload" enctype="multipart/form-data" method="post">   
+      <div class="info">
+        Click the button below to upload a file.
+      </div>
+
+      <div class="btn-outer">
+        <label class="btn">
+          <input name="fileToUpload" type="file" style="display:None;"> <span >Choose a file</span>
+        </label>
+        <span class="file-name"> No file selected</span>
+      </div>
+      <script>
+        Array.prototype.forEach.call(document.getElementsByTagName('input'), function(item) {
+          item.addEventListener("change", function() {
+            var fileName = '';
+            fileName = this.value.split("\\").slice(-1)[0];
+            this.parentNode.nextElementSibling.innerHTML = fileName;
+          });
+        });
+      </script>
+
+      <div class="input-wrapper">
+        <input class="submit" type="submit" value="Upload"/>
+      </div> 
+
+    </form>
+
+    </div>
+  </body>
+</html>

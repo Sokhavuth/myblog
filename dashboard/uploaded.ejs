@@ -1,0 +1,32 @@
+<!--uploaded.ejs-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File url</title>
+    <link rel='stylesheet' href='/stylesheets/uploaded.css' />
+    <link href="https://fonts.googleapis.com/css?family=Koulen|Shrikhand|Sriracha&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/site_logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="form-outer">
+    <div class="title">File url</div>
+    
+      <div class="info">
+        Click the button below to copy the file's url to the clipboard.
+      </div>
+
+      <div class="file-name">
+        <button class="copyButton">Copy</button><input onClick="this.select();" class="linkToCopy" value="<%- fileUrl %>" />
+      </div>
+      <script>
+        $('button.copyButton').click(function(){
+          $(this).siblings('input.linkToCopy').select();      
+          document.execCommand("copy");
+          window.close();
+        });
+      </script>
+
+    </div>
+  </body>
+</html>
