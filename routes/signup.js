@@ -19,7 +19,7 @@ router.post('/',(req,res) => {
 
     dbo.collection("users").find({}).toArray(function(err, result) {
       if (err) throw err;
-      if(result.length === 0){
+      if(result.length){
         dbo.collection("users").insertMany(userObj, function(err, result) {
           if (err) throw err;
           console.log("1 user was inserted!");

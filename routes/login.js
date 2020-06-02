@@ -178,4 +178,10 @@ router.post('/upload',
     res.render('uploaded',{fileUrl:'/media/'+req.fileName});
 });
 
+router.get('/user', 
+ifLogedin.ensureLoggedIn('/login'),
+function(req, res) {
+  res.render('signup');
+});
+
 module.exports = router;

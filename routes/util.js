@@ -20,7 +20,7 @@ class Utility {
         return (thumbUrl);
       }
     else
-      return (this.noPost); 
+      return ('<img src="'+this.noPost+'" />'); 
   }
   
 }//End of class
