@@ -25,10 +25,10 @@
 }
 .category .post-outer .play-icon{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  width:25%;
+  top:5px;
+  left:5px;
+  /*transform:translate(-50%, -50%);*/
+  width:15%;
   min-height:auto;
 }
 .category .post-outer .post-title{
@@ -59,17 +59,17 @@
     <div id="category" class="category">
     <% if(postList.length > 0) { %>
       <% for(var i = 0; i < postList.length; i++) { %>
-        <div class="post-outer">
-          <div class="thumb">
-            <div class="img-outer">
-              <a href="<%- postList[i].url %>"><%- postList[i].thumbUrl %></a>
-            </div><!--img-outer-->
-            <div class="post-date"><%- postList[i].date %></div>
-          </div><!--thumb-->
-          <div class="post-entry">
-            <div class="post-title"><a href="<%- postList[i].url %>"><%- postList[i].title %></a></div>
-          </div><!--post-entry-->
-        </div><!--post-outer-->
+          <div class="post-outer">
+            <div class="thumb">
+              <div class="img-outer">
+                <a href="<%- postList[i].url %>"><%- postList[i].thumbUrl %></a>
+              </div><!--img-outer-->
+              <div class="post-date"><%- postList[i].date %></div>
+            </div><!--thumb-->
+            <div class="post-entry">
+              <div class="post-title"><a href="<%- postList[i].url %>"><%- postList[i].title %></a></div>
+            </div><!--post-entry-->
+          </div><!--post-outer-->
       <% } %><!--for-->
     <% } %><!--if-->
     </div><!--category-->
